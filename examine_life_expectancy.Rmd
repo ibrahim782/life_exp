@@ -13,4 +13,43 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Here, we examine the cool life expectancy plot. 
 
-# Analysis 
+# Life Expectancy Analysis 
+
+
+```{r}
+
+install.packages("gapminder")
+
+library(gapminder)
+```
+
+
+```{r}
+
+
+d1 <- gapminder %>%
+  group_by(year) %>%
+ summarise(
+  lifeExp = max(lifeExp)
+  ) 
+
+
+left_join(d1,gapminder, by = "lifeExp")
+
+
+gapminder %>%
+  group_by(year) %>%
+  filter(lifeExp == max(lifeExp)) %>%
+  select(country,lifeExp,year) %>%
+  arrange(year) -> 
+  sumdat
+
+
+
+
+
+
+
+
+```
+
